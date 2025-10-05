@@ -1,5 +1,6 @@
 name: "Checkout"
 description: "Checkout a git repo"
+uses: actions/checkout@v2
 inputs:
   repository:
     description: "Repo name w/ owner"
