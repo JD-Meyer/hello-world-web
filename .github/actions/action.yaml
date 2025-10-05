@@ -1,0 +1,17 @@
+name: "Checkout"
+description: "Checkout a git repo"
+inputs:
+  repository:
+    description: "Repo name w/ owner"
+    default: ${{ github.repository }}
+    required: true
+    ref:
+      - repository:
+          description: >
+            The branch, tag, or SHA to check out.
+            Defaults to whatever branch is the default.
+
+    token:
+      description: PAT from local git config
+      default: ${{ secrets.GITHUB_TOKEN }}
+      required: true
