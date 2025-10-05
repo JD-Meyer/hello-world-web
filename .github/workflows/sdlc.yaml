@@ -1,23 +1,18 @@
-# .github/workflows/sdlc.yaml
 name: Hello World
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+    paths:
+      # This path triggers the workflow for any change in the repository.
+      # You might want to make this more specific, e.g., 'src/**'
+      - '.'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      # Use the local composite action from ./.github/actions/action.yaml I just created.
-      # The path is relative to the root of your repository.
-      - name: Checkout repository
-        uses: ./.github/actions
-
-      - name: Run a one line script
-        run: echo "Hello World!"
+      # It's best practice to use a more specific version of actions
+      # to avoid unexpected breaking changes.
+      - uses: actions/checkout@v4
