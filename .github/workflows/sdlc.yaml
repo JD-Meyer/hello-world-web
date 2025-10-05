@@ -27,4 +27,4 @@ jobs:
       - name: Install dependencies                  # 3. Install dependencies
         run: npm ci
       - name: Run HTMLHint                          # Run the HTML linter
-        run: npx htmlhint ***/*.html"
+        run: npx htmlhint ***/*.html
