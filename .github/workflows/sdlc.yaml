@@ -20,4 +20,3 @@ jobs:
       # It's best practice to use a more specific version of actions
       # to avoid unexpected breaking changes.
       - uses: actions/checkout@v4
-        run: echo Hello World!
