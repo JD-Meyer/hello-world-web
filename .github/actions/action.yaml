@@ -1,4 +1,4 @@
-# .github/workflows/sdlc.yaml
+# .github/workflows/action.yaml
 # creates a simple build pipeline
 name: Hello World
 
