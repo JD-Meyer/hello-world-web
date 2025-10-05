@@ -1,3 +1,4 @@
+# .github/workflows/sdlc.yaml
 name: Hello World
 
 on:
@@ -13,7 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      # Use the local composite action from ./.github/actions/action.yaml I just created.
+      # The path is relative to the root of your repository.
+      - name: Checkout repository
+        uses: ./.github/actions
 
       - name: Run a one line script
         run: echo "Hello World!"
