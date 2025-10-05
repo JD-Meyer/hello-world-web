@@ -5,7 +5,7 @@ inputs:
   repository:
     description: "Repo name w/ owner"
     default: ${{ github.repository }}
-    required: true
+    required: false
     ref:
       - repository:
           description: >
