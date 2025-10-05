@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Use the local composite action you just created.
+      # Use the local composite action from ./.github/actions/action.yaml I just created.
       # The path is relative to the root of your repository.
       - name: Checkout repository
         uses: ./.github/actions

@@ -5,7 +5,7 @@ description: "A wrapper for the official checkout action to comply with local ac
 # Define the inputs your action will accept. These will be passed to the underlying action.
 inputs:
   ref:
-    description: 'The branch, tag or SHA to checkout.'
+    description: 'The branch, tag or SHA to checkout'
     required: false
     default: ${{ github.ref }}
   token:
