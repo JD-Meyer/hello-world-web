@@ -1,5 +1,6 @@
 # .github/workflows/action.yaml
 # creates a simple build pipeline
+if: false
 name: Hello World
 
 on:

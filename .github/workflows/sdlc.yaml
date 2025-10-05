@@ -9,6 +9,9 @@ on:
       # This path triggers the workflow for any change in the repository.
       # You might want to make this more specific, e.g., 'src/**'
       - '.'
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -17,3 +20,4 @@ jobs:
       # It's best practice to use a more specific version of actions
       # to avoid unexpected breaking changes.
       - uses: actions/checkout@v4
+        run: echo Hello World!
