@@ -89,6 +89,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           # required for Pages artifacts
-          name: github-pages.${{ github.run_number }}
+          name: github-pages
       - name: List artifact contents
         run: ls -R
