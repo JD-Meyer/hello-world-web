@@ -55,7 +55,9 @@ jobs:
 
       # now create the artifacts directory for th ebuild artifact
       - name: create new artifacts directory
-        run: mkdir -p build
+        run: |
+          mkdir build
+          mv index.html build/
 
       # Now upload an artifact to GH Pages
       - name: Upload artifact
