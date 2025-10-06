@@ -61,7 +61,7 @@ jobs:
           name: artifact
           path: |
             build/
-            /mnt/c/Users/msjen/PycharmProjects/hello-world-web/index.html
+            ../index.html
 
   # Define a custom deployment step
   deploy:
