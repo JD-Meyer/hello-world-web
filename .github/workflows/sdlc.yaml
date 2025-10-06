@@ -62,7 +62,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Stick the artifact in the build directory
-          path: ./build
+          path: './build'
 
   # Define a custom deployment step
   deploy:
