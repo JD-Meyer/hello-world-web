@@ -60,7 +60,8 @@ jobs:
           # Create a build directory for the artifact
           name: artifact
           path: |
-            build/index.html
+            build/
+            index.html
 
   # Define a custom deployment step
   deploy:
