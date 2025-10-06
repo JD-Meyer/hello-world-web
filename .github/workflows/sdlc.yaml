@@ -61,8 +61,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Create a build directory for the artifact
-          name: artifact
+          # Stick the artifact in the build directory
           path: ./build
 
   # Define a custom deployment step
