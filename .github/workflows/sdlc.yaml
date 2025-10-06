@@ -91,7 +91,7 @@ jobs:
           push: true
           tags: ghcr.io/${{ toLower(github.repository) }}:latest
 
-  # Define a custom deployment step
+  # Define a custom deployment step.
   deploy:
     environment:
       name: github-pages
