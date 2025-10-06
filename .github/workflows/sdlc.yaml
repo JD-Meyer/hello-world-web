@@ -57,8 +57,10 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload the entire root directory
-          path: '.'
+          # Create a build directory for the artifact
+          name: artifact
+          path: |
+            build/index.html
 
   # Define a custom deployment step
   deploy:
