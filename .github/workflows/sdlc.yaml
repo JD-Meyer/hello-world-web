@@ -53,15 +53,17 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # now create the artifacts directory for th ebuild artifact
+      - name: create new artifacts directory
+        run: mkdir -p build
+
       # Now upload an artifact to GH Pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Create a build directory for the artifact
           name: artifact
-          path: |
-            build/
-            ../index.html
+          path: ./build
 
   # Define a custom deployment step
   deploy:
