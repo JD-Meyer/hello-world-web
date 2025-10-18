@@ -12,7 +12,7 @@ on:
   # Allows manual runs from the Actions UI
   workflow_dispatch:
 
-# Sets permissions on GITHUB_TOKEN for the entire workflow
+# Sets permissions on GITHUB_TOKEN for the entire workflow.
 permissions:
   contents: read
   pages: write
