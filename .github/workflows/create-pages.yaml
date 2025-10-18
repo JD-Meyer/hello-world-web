@@ -1,20 +1,18 @@
-# .github/workflows/sdlc.yaml
+# .github/workflows/create-pages.yaml
 # Build, Lint, and deploy
 name: Build, Lint, and Deploy
 
 on:
-  # Runs only when a push or pull request targets main
+  # Runs on pushes and PRs targeting main
   push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
 
-  # Adding a workflow_dispatch call will allow me to run the workflow
-  # manually from the Actions UI
+  # Allows manual runs from the Actions UI
   workflow_dispatch:
 
-# Sets permissions on GITHUB_TOKEN
-# to allow deployment to GH Pages
+# Sets permissions on GITHUB_TOKEN for the entire workflow
 permissions:
   contents: read
   pages: write
@@ -27,12 +25,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Build and lint
+  # Build and lint, producing a deployable artifact
   build:
+    name: Build and Lint
     runs-on: ubuntu-latest
     steps:
-      # It's best practice to use a more specific version of actions
-      # to avoid unexpected breaking changes.
       - name: Checkout code
         uses: actions/checkout@v4                   # 1. Get the code to run
 
@@ -40,30 +37,26 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          # Use npm's cache to speed up future builds
-          cache: 'npm'
+          cache: 'npm'                              # npm's cache speeds up runtime on future builds
 
       - name: Install dependencies                  # 3. Install dependencies
         run: npm ci
 
-      # Run the linter in this step
-      - name: Run HTMLHint                          # Run the HTML linter
+      - name: Run HTMLHint                          # 4. Run the HTML linter
         run: npx htmlhint "**/*.html"
 
-      # now create the artifacts directory for th ebuild artifact
-      - name: create new artifacts directory
+      - name: create new artifacts directory        # 5. create the artifacts directory for the build artifact
         run: |
           mkdir build
           mv index.html build/
 
-      # Now upload an artifact to GH Pages
-      - name: Upload artifact
+      - name: Upload artifact                       # Now upload an artifact to GH Pages
         uses: actions/upload-pages-artifact@v3
         with:
           # Stick the artifact in the build directory
           path: './build'
 
-  # Create a docker container
+  # Build and push a Docker image to the GitHub Container Registry
   build-and-push-docker:
     name: Build and Push Docker
     runs-on: ubuntu-latest
