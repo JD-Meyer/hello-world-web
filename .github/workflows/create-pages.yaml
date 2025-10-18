@@ -63,7 +63,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-    uses: jd-meyer/ci-cd/.github/workflows/build-docker-image.yaml@main
+    uses: jd-meyer/ci-cd/.github/workflows/build-docker.yaml@main
 
   # Deploy to the target environment by calling a reusable workflow
   deploy-reusable:
