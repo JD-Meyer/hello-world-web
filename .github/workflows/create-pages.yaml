@@ -65,7 +65,7 @@ jobs:
       packages: write
     uses: jd-meyer/ci-cd/.github/workflows/build-docker-image.yaml@main
 
-  # Deploy to the target environment by calling a reusable workflow.
+  # Deploy to the target environment by calling a reusable workflow
   deploy-reusable:
     name: Deploy via Reusable Workflow
     needs: build
