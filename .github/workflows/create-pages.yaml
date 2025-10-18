@@ -75,7 +75,7 @@ jobs:
       id-token: write
     uses: jd-meyer/ci-cd/.github/workflows/deploy-pages.yaml@main
 
-  # Download and list my artifact.
+  # Download and list my artifact
   artifact:
     name: Verify Artifact
     runs-on: ubuntu-latest
