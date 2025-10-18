@@ -27,7 +27,7 @@ jobs:
   # This job now calls a reusable workflow to build the application
   build-app:
     name: Build Application
-    uses: jd-meyer/ci-cd/.github/workflows/build-application.yaml
+    uses: jd-meyer/ci-cd/.github/workflows/build-application.yaml@main
     # No permissions are needed here because the reusable workflow defines its own permissions
 
   # Build and push a Docker image to the GitHub Container Registry
