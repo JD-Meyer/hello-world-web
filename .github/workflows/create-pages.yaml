@@ -81,6 +81,7 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/${{ toLower(github.repository) }}:latest
+
   # Deploy to the target environment by calling a reusable workflow
   deploy-reusable:
     name: Deploy via Reusable Workflow
