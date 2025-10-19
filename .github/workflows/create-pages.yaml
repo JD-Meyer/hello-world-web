@@ -42,13 +42,17 @@ jobs:
   # Deploy to the target environment by calling a reusable workflow
   deploy-to-dev:
     name: Deploy to Dev environment
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature')
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature/')
     needs: build-app  # Depends on build application completion
     # Grant permissions to the reusable workflow
     permissions:
       pages: write
       id-token: write
     uses: jd-meyer/ci-cd/.github/workflows/deploy-pages.yaml@main
+    with:
+      # Pass the specific environment name for this deployment
+      # For now, we'll use 'github-pages' as our dev environment target
+      environment-name: github-pages
 
   # Download and list my artifact
   verify-artifact:
