@@ -1,6 +1,6 @@
 # .github/workflows/create-pages.yaml
 # Build, Lint, and deploy
-name: SDLC-Build and Deploy to dev
+name: SDLC-Main Orchestrator
 
 on:
   # Runs on pushes and PRs targeting main
@@ -18,9 +18,9 @@ permissions:
   id-token: write
   packages: write
 
-# Allow only one concurrent deployment
+# Allow only one concurrent deployment PER ENVIRONMENT
 concurrency:
-  group: "pages"
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -43,6 +43,21 @@ jobs:
   deploy-to-dev:
     name: Deploy to Dev environment
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature/')
+    needs: build-app  # Depends on build application completion
+    # Grant permissions to the reusable workflow
+    permissions:
+      pages: write
+      id-token: write
+    uses: jd-meyer/ci-cd/.github/workflows/deploy-pages.yaml@main
+    with:
+      # Pass the specific environment name for this deployment
+      # For now, we'll use 'github-pages' as our dev environment target
+      environment-name: dev
+
+  # Deploy to the target environment by calling a reusable workflow
+  deploy-to-uat:
+    name: Deploy to UAT environment
+    if: github.event_name == 'pull_request' && github.base_ref == 'main'
     needs: build-app  # Depends on build application completion
     # Grant permissions to the reusable workflow
     permissions:
