@@ -1,6 +1,6 @@
 # .github/workflows/create-pages.yaml
 # Build, Lint, and deploy
-name: SDLC-Build and Deploy to dev
+name: SDLC-Main Orchestrator
 
 on:
   # Runs on pushes and PRs targeting main
