@@ -52,7 +52,7 @@ jobs:
     with:
       # Pass the specific environment name for this deployment
       # For now, we'll use 'github-pages' as our dev environment target
-      environment-name: github-pages
+      environment-name: dev
 
   # Download and list my artifact
   verify-artifact:
