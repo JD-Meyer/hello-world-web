@@ -69,6 +69,21 @@ jobs:
       # For now, we'll use 'github-pages' as our dev environment target
       environment-name: uat
 
+  # Deploy to the target environment by calling a reusable workflow
+  deploy-to-prd:
+    name: Deploy to PRD environment
+    if: github.event_name == 'pull_request' && github.base_ref == 'main'
+    needs: build-app  # Depends on build application completion
+    # Grant permissions to the reusable workflow
+    permissions:
+      pages: write
+      id-token: write
+    uses: jd-meyer/ci-cd/.github/workflows/deploy-pages.yaml@main
+    with:
+      # Pass the specific environment name for this deployment
+      # For now, we'll use 'github-pages' as our dev environment target
+      environment-name: prd
+
   # Download and list my artifact
   verify-artifact:
     name: Verify Artifact
