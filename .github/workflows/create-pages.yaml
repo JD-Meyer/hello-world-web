@@ -7,7 +7,7 @@ on:
   push:
     branches: ["feature/**"]
   pull_request:
-    branches: ["main", "release/**"]
+    branches: ["main", "test/**", "release/**"]
   # Allows manual runs from the Actions UI
   workflow_dispatch:
 
@@ -57,7 +57,7 @@ jobs:
   # Deploy to the target environment by calling a reusable workflow
   deploy-to-uat:
     name: Deploy to UAT environment
-    if: github.event_name == 'pull_request' && github.base_ref == 'main'
+    if: github.event_name == 'pull_request' && startsWith(github.ref, 'refs/heads/feature/')
     needs: build-app  # Depends on build application completion
     # Grant permissions to the reusable workflow
     permissions:
@@ -72,7 +72,10 @@ jobs:
   # Deploy to the target environment by calling a reusable workflow
   deploy-to-prd:
     name: Deploy to PRD environment
-    if: github.event_name == 'pull_request' && startsWith(github.ref, 'refs/heads/release/')
+    if: |
+      github.event_name == 'pull_request' && 
+      startsWith(github.head_ref, 'refs/heads/test/') &&
+      startsWith(github.base_ref, 'refs/heads/release/')
     needs: build-app  # Depends on build application completion
     # Grant permissions to the reusable workflow
     permissions:
