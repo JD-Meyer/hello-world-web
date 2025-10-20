@@ -7,7 +7,7 @@ on:
   push:
     branches: ["feature/**"]
   pull_request:
-    branches: ["main"]
+    branches: ["main", "release/**"]
   # Allows manual runs from the Actions UI
   workflow_dispatch:
 
