@@ -57,7 +57,7 @@ jobs:
   # Deploy to the target environment by calling a reusable workflow
   deploy-to-uat:
     name: Deploy to UAT environment
-    if: github.event_name == 'pull_request' && startsWith(github.ref, 'refs/heads/test/')
+    if: github.event_name == 'pull_request' && startsWith(github.ref, 'refs/heads/feature/')
     needs: build-app  # Depends on build application completion
     # Grant permissions to the reusable workflow
     permissions:
