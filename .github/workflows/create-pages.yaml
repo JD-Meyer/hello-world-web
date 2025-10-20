@@ -84,7 +84,7 @@ jobs:
       # For now, we'll use 'github-pages' as our dev environment target
       environment-name: prd
 
-  # Download and list my artifact
+  # Download and list my artifact.
   verify-artifact:
     name: Verify Artifact
     runs-on: ubuntu-latest
