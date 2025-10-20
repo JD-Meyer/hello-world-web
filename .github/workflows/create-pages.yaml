@@ -72,7 +72,7 @@ jobs:
   # Deploy to the target environment by calling a reusable workflow
   deploy-to-prd:
     name: Deploy to PRD environment
-    if: github.event_name == 'pull_request' && github.base_ref == 'main'
+    if: github.event_name == 'pull_request' && startsWith(github.ref, 'refs/heads/release/')
     needs: build-app  # Depends on build application completion
     # Grant permissions to the reusable workflow
     permissions:
